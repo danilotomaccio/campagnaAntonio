@@ -5,21 +5,75 @@ html {
 }
 
 body {
-    font-family: Avenir, Helvetica, sans-serif;
+    font-family: 'PT Serif', serif;
 }
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+header>img {
+    width: 85%;
+    margin: 12px;
+}
+
+.menuBar {
+    width: 85%;
+    margin-top: 12px;
+    background-color: whitesmoke;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menuBar > div {
+    margin: 0 8px;
+}
+
+.searchBar {
+    margin-bottom: 12px;
+    width: 85%;
+    background-color: #224975;
+    padding: 8px;
+}
+
+.search {
+    background-color: whitesmoke;
+    margin: auto;
+    width: 70%;
+}
+
+
 
 #bannerImg {
     max-width: 40%;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     padding: 20px;
 }
 
-.bannerText {
-    max-width: 60%;
-    color: white;
-
+.title {
     padding: 20px;
     font-size: 46px;
+
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-transform: uppercase;
 }
 
 .banner {
@@ -52,8 +106,14 @@ img#volantino {
     height: 620px;
 }
 
-.centralText {
+.data {
     padding: 24px;
+    font-size: 16px;
+    text-align: left;
+}
+
+.centralText {
+    padding: 12px 24px;
     font-size: 36px;
     text-align: left;
 }
@@ -65,7 +125,7 @@ img#volantino {
 
     #bannerImg {
         max-width: 100%;
-        border-radius: 0 0 12px 12px;
+        /* border-radius: 0 0 12px 12px; */
         padding: 0;
     }
 
