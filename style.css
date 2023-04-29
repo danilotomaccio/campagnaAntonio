@@ -55,7 +55,7 @@ img#volantino {
 .centralText {
     padding: 24px;
     font-size: 36px;
-    text-align: center;
+    text-align: left;
 }
 
 @media (max-width: 800px) {
