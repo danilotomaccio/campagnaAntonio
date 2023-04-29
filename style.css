@@ -1,11 +1,15 @@
-body {
+body,
+html {
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: Avenir, Helvetica, sans-serif;
 }
 
 #bannerImg {
     max-width: 40%;
-    overflow: visible;
     border-radius: 8px;
     padding: 20px;
 }
@@ -30,16 +34,17 @@ body {
 
 .footerText {
     max-width: 60%;
+    font-size: 24px;
 }
 
 .footer {
     flex-direction: row;
     display: flex;
-    height: 400px;
     color: white;
     background-color: #418e42;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 img#volantino {
@@ -54,17 +59,20 @@ img#volantino {
 }
 
 @media (max-width: 800px) {
+    .banner {
+        border-radius: 0 0 12px 12px;
+    }
+
     #bannerImg {
         max-width: 100%;
-        overflow: visible;
-        border-radius: 8px;
+        border-radius: 0 0 12px 12px;
         padding: 0;
     }
 
     .bannerText {
         max-width: 100%;
         text-align: center;
-    
+
         padding: 30px;
         font-size: 40px;
     }
@@ -72,5 +80,10 @@ img#volantino {
     .propaganda {
         text-align: left;
         font-size: 20px;
+    }
+
+    .footerText {
+        max-width: 100%;
+        padding: 30px;
     }
 }
