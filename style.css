@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Avenir, Helvetica, sans-serif;
+}
+
+#bannerImg {
+    max-width: 40%;
+    overflow: visible;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.bannerText {
+    max-width: 60%;
+    color: white;
+
+    padding: 20px;
+    font-size: 46px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #418e42;
+
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footerText {
+    max-width: 60%;
+}
+
+.footer {
+    flex-direction: row;
+    display: flex;
+    height: 400px;
+    color: white;
+    background-color: #418e42;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+img#volantino {
+    clip-path: inset(9px);
+    height: 620px;
+}
+
+.centralText {
+    padding: 24px;
+    font-size: 36px;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    #bannerImg {
+        max-width: 100%;
+        overflow: visible;
+        border-radius: 8px;
+        padding: 0;
+    }
+
+    .bannerText {
+        max-width: 100%;
+        text-align: center;
+    
+        padding: 30px;
+        font-size: 40px;
+    }
+
+    .propaganda {
+        text-align: left;
+        font-size: 20px;
+    }
+}
