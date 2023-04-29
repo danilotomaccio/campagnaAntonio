@@ -5,7 +5,14 @@ html {
 }
 
 body {
+    background-color: whitesmoke;
     font-family: 'PT Serif', serif;
+}
+
+.all {
+    background-color: white;
+    max-width: 80%;
+    margin: auto;
 }
 
 .material-symbols-outlined {
@@ -21,20 +28,19 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-
+    justify-content: flex-start;
     font-weight: 700;
 }
 
 header>img {
-    width: 85%;
+    width: 40%;
     margin: 12px;
 }
 
 .menuBar {
-    width: 85%;
+    width: 100%;
     margin-top: 12px;
-    background-color: whitesmoke;
+    background-color: white;
     padding: 8px;
 
     display: flex;
@@ -43,13 +49,13 @@ header>img {
     align-items: center;
 }
 
-.menuBar > div {
+.menuBar>div {
     margin: 0 8px;
 }
 
 .searchBar {
+    width: 100%;
     margin-bottom: 12px;
-    width: 85%;
     background-color: #224975;
     padding: 8px;
 }
@@ -80,14 +86,13 @@ header>img {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: #418e42;
 
     align-items: center;
     justify-content: space-around;
 }
 
 .footerText {
-    max-width: 60%;
+    max-width: 50%;
     font-size: 24px;
 }
 
@@ -118,7 +123,30 @@ img#volantino {
     text-align: left;
 }
 
+.propaganda {
+    text-align: left;
+    font-size: 20px;
+}
+
 @media (max-width: 800px) {
+    header {
+        justify-content: center;
+    }
+
+    header>img {
+        width: 85%;
+        margin: 12px;
+    }
+
+    .all {
+        max-width: 100%;
+    }
+
+    .menuBar,
+    .searchBar {
+        width: 85%;
+    }
+
     .banner {
         border-radius: 0 0 12px 12px;
     }
@@ -135,11 +163,6 @@ img#volantino {
 
         padding: 30px;
         font-size: 40px;
-    }
-
-    .propaganda {
-        text-align: left;
-        font-size: 20px;
     }
 
     .footerText {
