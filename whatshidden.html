@@ -13,14 +13,24 @@
             max-width: 100%;
             margin: 10px 0;
         }
+
+        .imgInput {
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 
 <body>
     <h1>Unione di immagini</h1>
     <p>Seleziona due immagini da unire:</p>
-    <input type="file" id="immaginePrev" accept="image/*">
-    <input type="file" id="immagineHidden" accept="image/*">
+    <div class="imgInput">
+        <label for="immaginePrev">Immagine preview</label>
+        <input type="file" id="immaginePrev" accept="image/*">
+    </div>
+    <div class="imgInput">
+        <label for="immagineHidden">Immagine da nascondere</label>
+        <input type="file" id="immagineHidden" accept="image/*">
+    </div>
     <button id="unisciBtn">Unisci immagini</button>
     <p>Risultato:</p>
     <img id="risultato">
@@ -66,10 +76,10 @@
                     ctx.drawImage(immagineHiddenImg, 0, (2 * immagineHiddenImg.height) + newPrevImgHeight);
                     const risultatoUrl = canvas.toDataURL();
                     risultatoImg.src = risultatoUrl;
-                    /* const downloadLink = document.createElement('a');
+                    const downloadLink = document.createElement('a');
                     downloadLink.href = risultatoUrl;
                     downloadLink.download = 'immagine_unione.png';
-                    downloadLink.click(); */
+                    downloadLink.click();
                 });
                 immagineHiddenImg.src = immagineHiddenUrl;
             });
