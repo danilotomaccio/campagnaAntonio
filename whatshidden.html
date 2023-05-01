@@ -49,14 +49,19 @@
                 immagineHiddenImg.addEventListener('load', () => {
                     const canvas = document.createElement('canvas');
 
-                    const prevImgRatio = immaginePrevImg.width / immaginePrevImg.height;
-                    const newPrevImgHeight = immagineHiddenImg.width / prevImgRatio;
+                    const prevImgRatio = 1.5;// immaginePrevImg.width / immaginePrevImg.height;
+                    const newPrevImgHeight = immagineHiddenImg.width * prevImgRatio;
+
+                    const sx = immaginePrevImg.width > immagineHiddenImg.width ? (immaginePrevImg.width - immagineHiddenImg.width) / 2 : 0;
+                    const sy = immaginePrevImg.height > newPrevImgHeight ? (immaginePrevImg.height - newPrevImgHeight) / 2 : 0;
+                    const sWidth = immaginePrevImg.width - (sx * 2);
+                    const sHeight = immaginePrevImg.height - (sy * 2);
 
                     canvas.width = immagineHiddenImg.width;
                     canvas.height = newPrevImgHeight + (3 * immagineHiddenImg.height);
                     const ctx = canvas.getContext('2d');
-                    ctx.drawImage(immaginePrevImg, 0, immagineHiddenImg.height, immagineHiddenImg.width, newPrevImgHeight);
                     ctx.drawImage(immagineHiddenImg, 0, 0);
+                    ctx.drawImage(immaginePrevImg, sx, sy, sWidth, sHeight, 0, immagineHiddenImg.height, immagineHiddenImg.width, newPrevImgHeight);
                     ctx.drawImage(immagineHiddenImg, 0, immagineHiddenImg.height + newPrevImgHeight);
                     ctx.drawImage(immagineHiddenImg, 0, (2 * immagineHiddenImg.height) + newPrevImgHeight);
                     const risultatoUrl = canvas.toDataURL();
