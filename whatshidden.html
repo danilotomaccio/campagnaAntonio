@@ -28,15 +28,15 @@
 
 <body>
     <h1>WhatsHidden</h1>
-    <p>Seleziona due immagini da unire:</p>
+    <p>Seleziona un'immagine da visualizzare nella preview:</p>
     <div class="imgInput">
-        <label for="immaginePrev">Immagine preview: </label>
         <input type="file" id="immaginePrev" accept="image/*">
     </div>
     <img id="immagineHidden" src="images/volantino_crop.png" alt="">
-    <button id="unisciBtn">Unisci immagini</button>
+    <button id="unisciBtn">Genera</button>
     <p>Risultato:</p>
     <img id="risultato">
+
     <script>
         const immaginePrevInput = document.getElementById('immaginePrev');
         const immagineHiddenInput = document.getElementById('immagineHidden');
@@ -87,6 +87,7 @@
             immaginePrevImg.src = immaginePrevUrl;
         });
     </script>
+    
 </body>
 
 </html>
