@@ -16,6 +16,10 @@
             margin: 10px 0;
         }
 
+        #immagineHidden {
+            display: none;
+        }
+
         .imgInput {
             margin-bottom: 8px;
         }
@@ -29,10 +33,7 @@
         <label for="immaginePrev">Immagine preview: </label>
         <input type="file" id="immaginePrev" accept="image/*">
     </div>
-    <div class="imgInput">
-        <label for="immagineHidden">Immagine da nascondere: </label>
-        <input type="file" id="immagineHidden" accept="image/*">
-    </div>
+    <img id="immagineHidden" src="images/volantino_crop.png" alt="">
     <button id="unisciBtn">Unisci immagini</button>
     <p>Risultato:</p>
     <img id="risultato">
@@ -44,48 +45,44 @@
 
         unisciBtn.addEventListener('click', () => {
             const immaginePrevFile = immaginePrevInput.files[0];
-            const immagineHiddenFile = immagineHiddenInput.files[0];
 
-            if (!immaginePrevFile || !immagineHiddenFile) {
-                alert('Seleziona entrambe le immagini');
+            if (!immaginePrevFile) {
+                alert("Selezionare un'immagine");
                 return;
             }
 
             const immaginePrevUrl = URL.createObjectURL(immaginePrevFile);
-            const immagineHiddenUrl = URL.createObjectURL(immagineHiddenFile);
 
             const immaginePrevImg = new Image();
-            const immagineHiddenImg = new Image();
+            const immagineHiddenImg = document.getElementById('immagineHidden');
 
             immaginePrevImg.addEventListener('load', () => {
-                immagineHiddenImg.addEventListener('load', () => {
-                    const canvas = document.createElement('canvas');
 
-                    const prevImgRatio = 1.5;// immaginePrevImg.width / immaginePrevImg.height;
-                    const newPrevImgHeight = immagineHiddenImg.width * prevImgRatio;
+                const canvas = document.createElement('canvas');
 
-                    console.log("immaginePrevImg.width: " + immaginePrevImg.width);
-                    console.log("immagineHiddenImg.width: " + immagineHiddenImg.width);
-                    const sx = immaginePrevImg.width > immagineHiddenImg.width ? (immaginePrevImg.width - immagineHiddenImg.width) / 2 : 0;
-                    const sy = immaginePrevImg.height > newPrevImgHeight ? (immaginePrevImg.height - newPrevImgHeight) / 2 : 0;
-                    const sWidth = immaginePrevImg.width - (sx * 2);
-                    const sHeight = immaginePrevImg.height - (sy * 2);
+                const prevImgRatio = 1.5;// immaginePrevImg.width / immaginePrevImg.height;
+                const newPrevImgHeight = immagineHiddenImg.width * prevImgRatio;
 
-                    canvas.width = immagineHiddenImg.width;
-                    canvas.height = newPrevImgHeight + (3 * immagineHiddenImg.height);
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(immagineHiddenImg, 0, 0);
-                    ctx.drawImage(immaginePrevImg, sx, sy, sWidth, sHeight, 0, immagineHiddenImg.height, immagineHiddenImg.width, newPrevImgHeight);
-                    ctx.drawImage(immagineHiddenImg, 0, immagineHiddenImg.height + newPrevImgHeight);
-                    ctx.drawImage(immagineHiddenImg, 0, (2 * immagineHiddenImg.height) + newPrevImgHeight);
-                    const risultatoUrl = canvas.toDataURL();
-                    risultatoImg.src = risultatoUrl;
-                    /* const downloadLink = document.createElement('a');
-                    downloadLink.href = risultatoUrl;
-                    downloadLink.download = 'immagine_unione.png';
-                    downloadLink.click(); */
-                });
-                immagineHiddenImg.src = immagineHiddenUrl;
+                const sx = immaginePrevImg.width > immagineHiddenImg.width ? (immaginePrevImg.width - immagineHiddenImg.width) / 2 : 0;
+                const sy = immaginePrevImg.height > newPrevImgHeight ? (immaginePrevImg.height - newPrevImgHeight) / 2 : 0;
+                const sWidth = immaginePrevImg.width - (sx * 2);
+                const sHeight = immaginePrevImg.height - (sy * 2);
+
+                canvas.width = immagineHiddenImg.width;
+                canvas.height = newPrevImgHeight + (3 * immagineHiddenImg.height);
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(immagineHiddenImg, 0, 0);
+                ctx.drawImage(immaginePrevImg, sx, sy, sWidth, sHeight, 0, immagineHiddenImg.height, immagineHiddenImg.width, newPrevImgHeight);
+                ctx.drawImage(immagineHiddenImg, 0, immagineHiddenImg.height + newPrevImgHeight);
+                ctx.drawImage(immagineHiddenImg, 0, (2 * immagineHiddenImg.height) + newPrevImgHeight);
+                const risultatoUrl = canvas.toDataURL();
+                risultatoImg.src = risultatoUrl;
+                /* const downloadLink = document.createElement('a');
+                downloadLink.href = risultatoUrl;
+                downloadLink.download = 'immagine_unione.png';
+                downloadLink.click(); */
+
+                // immagineHiddenImg.src = immagineHiddenUrl;
             });
             immaginePrevImg.src = immaginePrevUrl;
         });
