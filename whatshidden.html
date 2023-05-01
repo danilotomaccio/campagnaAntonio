@@ -36,10 +36,12 @@
     <button id="unisciBtn">Unisci immagini</button>
     <p>Risultato:</p>
     <img id="risultato">
+    <button class="" id="condividiBtn" disabled>Condividi</button>
     <script>
         const immaginePrevInput = document.getElementById('immaginePrev');
         const immagineHiddenInput = document.getElementById('immagineHidden');
         const unisciBtn = document.getElementById('unisciBtn');
+        const condividiBtn = document.getElementById('condividiBtn');
         const risultatoImg = document.getElementById('risultato');
 
         unisciBtn.addEventListener('click', () => {
@@ -88,6 +90,22 @@
                 immagineHiddenImg.src = immagineHiddenUrl;
             });
             immaginePrevImg.src = immaginePrevUrl;
+
+            condividiBtn.disabled = false;
+
+            condividiBtn.addEventListener('click', () => {
+			if (navigator.share) {
+				navigator.share({
+					title: 'Immagine tagliata',
+					text: 'Guarda questa immagine tagliata',
+					url: risultatoImg.src,
+				})
+					.then(() => console.log('Immagine condivisa'))
+					.catch((error) => console.log('Errore durante la condivisione:', error));
+			} else {
+				alert('Web Share non supportato su questo browser');
+			}
+		});
         });
     </script>
 </body>
