@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Unione di immagini</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsHidden</title>
     <style>
         body {
             font-family: sans-serif;
@@ -24,11 +26,11 @@
     <h1>Unione di immagini</h1>
     <p>Seleziona due immagini da unire:</p>
     <div class="imgInput">
-        <label for="immaginePrev">Immagine preview</label>
+        <label for="immaginePrev">Immagine preview: </label>
         <input type="file" id="immaginePrev" accept="image/*">
     </div>
     <div class="imgInput">
-        <label for="immagineHidden">Immagine da nascondere</label>
+        <label for="immagineHidden">Immagine da nascondere: </label>
         <input type="file" id="immagineHidden" accept="image/*">
     </div>
     <button id="unisciBtn">Unisci immagini</button>
@@ -62,6 +64,8 @@
                     const prevImgRatio = 1.5;// immaginePrevImg.width / immaginePrevImg.height;
                     const newPrevImgHeight = immagineHiddenImg.width * prevImgRatio;
 
+                    console.log("immaginePrevImg.width: " + immaginePrevImg.width);
+                    console.log("immagineHiddenImg.width: " + immagineHiddenImg.width);
                     const sx = immaginePrevImg.width > immagineHiddenImg.width ? (immaginePrevImg.width - immagineHiddenImg.width) / 2 : 0;
                     const sy = immaginePrevImg.height > newPrevImgHeight ? (immaginePrevImg.height - newPrevImgHeight) / 2 : 0;
                     const sWidth = immaginePrevImg.width - (sx * 2);
@@ -76,10 +80,10 @@
                     ctx.drawImage(immagineHiddenImg, 0, (2 * immagineHiddenImg.height) + newPrevImgHeight);
                     const risultatoUrl = canvas.toDataURL();
                     risultatoImg.src = risultatoUrl;
-                    const downloadLink = document.createElement('a');
+                    /* const downloadLink = document.createElement('a');
                     downloadLink.href = risultatoUrl;
                     downloadLink.download = 'immagine_unione.png';
-                    downloadLink.click();
+                    downloadLink.click(); */
                 });
                 immagineHiddenImg.src = immagineHiddenUrl;
             });
