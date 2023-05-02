@@ -24,6 +24,29 @@
         .imgInput {
             margin-bottom: 8px;
         }
+
+        .hide {
+            display: none;
+        }
+
+        .animate {
+            display: block;
+            animation: rotation 2s infinite linear;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg) scale(0.4);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(0.4);
+            }
+        }
     </style>
 </head>
 
@@ -36,15 +59,22 @@
     <img id="immagineHidden" src="images/volantino_crop.png" alt="">
     <button id="unisciBtn">Genera</button>
     <p>Risultato:</p>
-    <img id="risultato">
+    <div id="loading" class="hide">
+        <img src="images/faviconAnt.png" alt="">
+    </div>
+    <img id="risultato" onloadstart="document.getElementById('loading').classList = ['animate']" onload="document.getElementById('loading').classList = ['hide']">
 
     <script>
         const immaginePrevInput = document.getElementById('immaginePrev');
         const immagineHiddenInput = document.getElementById('immagineHidden');
         const unisciBtn = document.getElementById('unisciBtn');
         const risultatoImg = document.getElementById('risultato');
+        const loading = document.getElementById('loading');
 
         unisciBtn.addEventListener('click', () => {
+
+            loading.classList = ['animate'];
+
             const immaginePrevFile = immaginePrevInput.files[0];
 
             if (!immaginePrevFile) {
@@ -76,6 +106,7 @@
                 ctx.drawImage(immaginePrevImg, sx, sy, sWidth, sHeight, 0, immagineHiddenImg.height, immagineHiddenImg.width, newPrevImgHeight);
                 ctx.drawImage(immagineHiddenImg, 0, immagineHiddenImg.height + newPrevImgHeight);
                 ctx.drawImage(immagineHiddenImg, 0, (2 * immagineHiddenImg.height) + newPrevImgHeight);
+
                 const risultatoUrl = canvas.toDataURL();
                 risultatoImg.src = risultatoUrl;
                 /* const downloadLink = document.createElement('a');
@@ -86,6 +117,7 @@
                 // immagineHiddenImg.src = immagineHiddenUrl;
             });
             immaginePrevImg.src = immaginePrevUrl;
+            // loading.classList = ['hide'];
         });
     </script>
 
